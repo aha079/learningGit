@@ -9,7 +9,15 @@ class TestLogin(unittest.TestCase):
         + username: vahid
         + password: test
     '''
-
+    def test_password_reset(self):
+        r = requests.post(
+            'http://localhost:4000/user/reset_password',
+            data={
+                'username': 'vahid',
+                'password': 'newpass'
+            }
+        )
+  
     def test_login_success(self):
         r = requests.post(
             'http://localhost:4000/user/login',

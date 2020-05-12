@@ -3,6 +3,7 @@ from mongoengine import Document, EmbeddedDocument, ReferenceField, \
 
 
 class UserModel(Document):
+    meta = {'collection': 'users'}
     username = StringField()
     firstname = StringField()
     lastname = StringField()

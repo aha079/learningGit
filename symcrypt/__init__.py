@@ -27,6 +27,18 @@ def load_user(user):
     return UserModel.objects(username=user).first()
 
 
+@app.route("/user/reset_password", methods=['GET', 'POST'])
+def reset_pass():
+    u = UserModel.objects(username=request.form['username'])
+    if u is None:
+        flash('That username is an invalid ')
+        return redirect(url_for('/user/login'))
+    hashed_password = request.form['password'] 
+    User.objects(username=u.username).update_one(password=hashed_password)
+    flash('Your password has been updated! You are now able to log in', 'success')
+    return redirect(url_for('/user/login'))
+
+
 @app.route('/user/login', methods=['POST'])
 def login():
     u = UserModel.objects(username=request.form['username']).first()
