@@ -7,8 +7,8 @@ SECRET_KEY = 'Something Secret'
 
 # Modules
 INSTALLED_MODULES = [
-    'user',
-    'crypto',
+    'user'
+    # 'crypto',
     # 'price'
 ]
 
